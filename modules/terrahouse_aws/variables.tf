@@ -17,3 +17,23 @@ variable "bucket_name" {
     error_message = "Invalid bucket name. Bucket names must be lowercase, between 3 and 63 characters, and can only contain lowercase letters, numbers, hyphens, and periods (dots)."
   }
 }
+
+variable "index_html_filepath" {
+  description = "Path to the index HTML file"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.index_html_filepath)
+    error_message = "The specified index HTML file does not exist."
+  }
+}
+
+variable "error_html_filepath" {
+  description = "Path to the error HTML file"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.error_html_filepath)
+    error_message = "The specified error HTML file does not exist."
+  }
+}
