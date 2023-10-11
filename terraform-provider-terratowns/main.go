@@ -17,6 +17,10 @@ func main () {
 func Provider() *schema.Provider {
 	var p *schema.Provider
 	p = &schema.Provider{
+}
+
+func Provider() *schema.Provider {
+	var p *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 
 		},
