@@ -1,10 +1,10 @@
 terraform {
-#  cloud {
-#    organization = "Idaho-Muellers"
-#    workspaces {
-#      name = "terraform-beginner-bootcamp-2023"
-#    }
-#  }
+  cloud {
+    organization = "Idaho-Muellers"
+    workspaces {
+      name = "terraform-beginner-bootcamp-2023"
+    }
+  }
 }
 
 module "terrahouse_aws" {
