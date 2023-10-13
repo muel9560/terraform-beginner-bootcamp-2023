@@ -130,7 +130,7 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 	payload := map[string]interface{}{
 		"name": d.Get("name").(string),
 		"description": d.Get("description").(string),
-		"domain-name": d.Get("domain_name").(string),
+		"domain_name": d.Get("domain_name").(string),
 		"town": d.Get("town").(string),
 		"content_version": d.Get("content_version").(int),
 	}
@@ -181,21 +181,11 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 
 	config := m.(*Config)
 
-	payload := map[string]interface{}{
-		"name": d.Get("name").(string),
-		"description": d.Get("description").(string),
-		"domain-name": d.Get("domain_name").(string),
-		"town": d.Get("town").(string),
-		"content_version": d.Get("content_version").(float64),
-	}
-	payloadBytes, err := json.Marshal(payload)
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
 	homeUUID := d.Id()
 	// Construct the HTTP Request
-	req, err := http.NewRequest("GET", config.Endpoint+"/u/"+config.UserUuid+"/homes/"+homeUUID, bytes.NewBuffer(payloadBytes))
+	url := config.Endpoint+"/u/"+config.UserUuid+"/homes/"+homeUUID
+	log.Print("URL: "+ url)
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return diag.FromErr(err)
 	}
@@ -207,7 +197,9 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 	
 	client := http.Client{}
 	resp, err := client.Do(req)
+	log.Print("client.Do(req)")
 	if err != nil {
+		log.Print("client.Do(req) error")
 		return diag.FromErr(err)
 	}
 	defer resp.Body.Close()
@@ -215,13 +207,15 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 	// parse response JSON
 	var responseData map[string]interface{}
 	if err := json.NewDecoder(resp.Body).Decode(&responseData); err!= nil {
+		log.Print("ResponseData map error")
 		return diag.FromErr(err)
 	}
 
 	// Handle response status
 	if resp.StatusCode == http.StatusOK {
 		// parse response JSON
-		if err := json.NewDecoder(resp.Body).Decode(&responseData); err!= nil {
+		if err := json.NewDecoder(resp.Body).Decode(&responseData); err != nil {
+			log.Print("StatusCode: OK, json decode error")
 			return diag.FromErr(err)
 		}
 		d.Set("name",responseData["name"].(string))
