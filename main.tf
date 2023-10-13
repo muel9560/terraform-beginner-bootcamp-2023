@@ -28,7 +28,7 @@ provider "terratowns" {
 #  content_version = var.content_version
 #}
 
-resource "terratown_home" "home" {
+resource "terratowns_home" "home" {
   name = "How to"
   description = <<DESCRIPTION
 How to description
