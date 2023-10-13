@@ -204,12 +204,7 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 	}
 	defer resp.Body.Close()
 	
-	// parse response JSON
 	var responseData map[string]interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&responseData); err!= nil {
-		log.Print("ResponseData map error")
-		return diag.FromErr(err)
-	}
 
 	// Handle response status
 	if resp.StatusCode == http.StatusOK {
@@ -238,6 +233,8 @@ func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 
 	config := m.(*Config)
 
+	homeUUID := d.Id()
+
 	payload := map[string]interface{}{
 		"name": d.Get("name").(string),
 		"description": d.Get("description").(string),
@@ -248,7 +245,6 @@ func resourceHouseUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 		return diag.FromErr(err)
 	}
 
-	homeUUID := d.Id()
 	// Construct the HTTP Request
 	req, err := http.NewRequest("PUT", config.Endpoint+"/u/"+config.UserUuid+"/homes/"+homeUUID, bytes.NewBuffer(payloadBytes))
 	if err != nil {
