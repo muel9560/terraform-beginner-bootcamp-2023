@@ -24,7 +24,7 @@ module "home_justified" {
   user_uuid = var.teacherseat_user_uuid
   bucket_name = var.bucket_name
   public_path = var.justified_public_path
-  content_version = var.content_version
+  content_version = var.justified_content_version
 }
 
 resource "terratowns_home" "justified" {
@@ -35,7 +35,7 @@ DESCRIPTION
   domain_name = module.home_justified.domaion_name
 #  domain_name = "fnjsijrvis.cloudfront.net"
   town = "video-valley"
-  content_version = var.content_version
+  content_version = var.justified_content_version
 }
 
 module "home_sugarcookies" {
@@ -43,7 +43,7 @@ module "home_sugarcookies" {
   user_uuid = var.teacherseat_user_uuid
   bucket_name = var.bucket_name
   public_path = var.sugarcookies_public_path
-  content_version = var.content_version
+  content_version = var.sugarcookies_content_version
 }
 
 resource "terratowns_home" "sugarcookies" {
@@ -54,5 +54,5 @@ DESCRIPTION
   domain_name = module.home_sugarcookies.domain_name
 #  domain_name = "fnjsijrvis.cloudfront.net"
   town = "cooker-cove"
-  content_version = var.content_version
+  content_version = var.sugar_content_version
 }

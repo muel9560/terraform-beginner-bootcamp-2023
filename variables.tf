@@ -33,7 +33,12 @@ variable "sugarcookies_public_path" {
   type = string
 }
 
-variable "content_version" {
+variable "justified_content_version" {
+  description = "Content Version"
+  type        = number
+}
+
+variable "sugarcookies_content_version" {
   description = "Content Version"
   type        = number
 }
