@@ -1,3 +1,13 @@
+variable "terratowns_endpoint" {
+  description = "Terratowns endpoint"
+  type        = string
+}
+
+variable "teacherseat_user_uuid" {
+  description = "Teacherseat User UUID"
+  type        = string
+}
+
 variable "user_uuid" {
   description = "User UUID"
   type        = string
