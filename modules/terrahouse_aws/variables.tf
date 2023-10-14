@@ -18,23 +18,13 @@ variable "bucket_name" {
   }
 }
 
-variable "index_html_filepath" {
-  description = "Path to the index HTML file"
+variable "public_path" {
+  description = "The path to the public folder"
   type        = string
 
   validation {
-    condition     = fileexists(var.index_html_filepath)
-    error_message = "The specified index HTML file does not exist."
-  }
-}
-
-variable "error_html_filepath" {
-  description = "Path to the error HTML file"
-  type        = string
-
-  validation {
-    condition     = fileexists(var.error_html_filepath)
-    error_message = "The specified error HTML file does not exist."
+    condition     = fileexists(var.public_path)
+    error_message = "The specified public folder does not exist."
   }
 }
 
@@ -46,9 +36,4 @@ variable "content_version" {
     condition     = var.content_version > 0 && ceil(var.content_version) == floor(var.content_version)
     error_message = "Content version must be a positive integer starting at 1."
   }
-}
-
-variable "assets_path" {
-  description = "Path to assets folder"
-  type = string
 }

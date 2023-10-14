@@ -13,24 +13,24 @@ variable "terratowns_access_token" {
   type = string
 }
 
-variable "user_uuid" {
-  description = "User UUID"
-  type        = string
-}
-
 variable "bucket_name" {
   description = "AWS S3 Bucket Name"
   type        = string
 }
 
-variable "index_html_filepath" {
-  description = "Path to the index HTML file"
+variable "public_path" {
+  description = "The path to the public folder"
   type        = string
 }
 
-variable "error_html_filepath" {
-  description = "Path to the error HTML file"
-  type        = string
+variable "justified_public_path" {
+  description = "The path to justified"
+  type = string
+}
+
+variable "sugarcookies_public_path" {
+  description = "The path to sugarcookies"
+  type = string
 }
 
 variable "content_version" {
