@@ -23,8 +23,8 @@ module "home_justified" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
   bucket_name = var.bucket_name
-  public_path = var.justified_public_path
-  content_version = var.justified_content_version
+  public_path = var.justified.public_path
+  content_version = var.justified.content_version
 }
 
 resource "terratowns_home" "justified" {
@@ -32,18 +32,18 @@ resource "terratowns_home" "justified" {
   description = <<DESCRIPTION
 About Justified
 DESCRIPTION
-  domain_name = module.home_justified.domaion_name
+  domain_name = module.home_justified.domain_name
 #  domain_name = "fnjsijrvis.cloudfront.net"
   town = "video-valley"
-  content_version = var.justified_content_version
+  content_version = var.justified.content_version
 }
 
 module "home_sugarcookies" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
   bucket_name = var.bucket_name
-  public_path = var.sugarcookies_public_path
-  content_version = var.sugarcookies_content_version
+  public_path = var.sugarcookies.public_path
+  content_version = var.sugarcookies.content_version
 }
 
 resource "terratowns_home" "sugarcookies" {
@@ -54,5 +54,5 @@ DESCRIPTION
   domain_name = module.home_sugarcookies.domain_name
 #  domain_name = "fnjsijrvis.cloudfront.net"
   town = "cooker-cove"
-  content_version = var.sugar_content_version
+  content_version = var.sugar.content_version
 }

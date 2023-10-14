@@ -18,32 +18,16 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "public_path" {
-  description = "The path to the public folder"
-  type        = string
+variable "justified" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
 }
 
-variable "justified_public_path" {
-  description = "The path to justified"
-  type = string
-}
-
-variable "sugarcookies_public_path" {
-  description = "The path to sugarcookies"
-  type = string
-}
-
-variable "justified_content_version" {
-  description = "Content Version"
-  type        = number
-}
-
-variable "sugarcookies_content_version" {
-  description = "Content Version"
-  type        = number
-}
-
-variable "assets_path" {
-  description = "Path to assets folder"
-  type = string
+variable "sugarcookies" {
+  type = object({
+    public_path = string
+    content_version = number
+  })
 }
