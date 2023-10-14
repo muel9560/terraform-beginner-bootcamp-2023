@@ -8,6 +8,11 @@ variable "teacherseat_user_uuid" {
   type        = string
 }
 
+variable "terratowns_access_token" {
+  description = "Terratowns Access Token"
+  type = string
+}
+
 variable "user_uuid" {
   description = "User UUID"
   type        = string

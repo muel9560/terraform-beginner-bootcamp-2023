@@ -36,6 +36,6 @@ About Justified
 DESCRIPTION
   domain_name = module.terrahouse_aws.cloudfront_url
 #  domain_name = "fnjsijrvis.cloudfront.net"
-  town = "missingo"
+  town = "video-valley"
   content_version = var.content_version
 }
