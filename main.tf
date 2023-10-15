@@ -22,7 +22,6 @@ provider "terratowns" {
 module "home_justified" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
   public_path = var.justified.public_path
   content_version = var.justified.content_version
 }
@@ -41,7 +40,6 @@ DESCRIPTION
 module "home_sugarcookies" {
   source = "./modules/terrahouse_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
   public_path = var.sugarcookies.public_path
   content_version = var.sugarcookies.content_version
 }
@@ -54,5 +52,5 @@ DESCRIPTION
   domain_name = module.home_sugarcookies.domain_name
 #  domain_name = "fnjsijrvis.cloudfront.net"
   town = "cooker-cove"
-  content_version = var.sugar.content_version
+  content_version = var.sugarcookies.content_version
 }

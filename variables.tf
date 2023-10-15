@@ -13,11 +13,6 @@ variable "terratowns_access_token" {
   type = string
 }
 
-variable "bucket_name" {
-  description = "AWS S3 Bucket Name"
-  type        = string
-}
-
 variable "justified" {
   type = object({
     public_path = string

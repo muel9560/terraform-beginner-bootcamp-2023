@@ -8,24 +8,19 @@ variable "user_uuid" {
   }
 }
 
-variable "bucket_name" {
-  description = "AWS S3 Bucket Name"
-  type        = string
+#variable "bucket_name" {
+#  description = "AWS S3 Bucket Name"
+#  type        = string
 
-  validation {
-    condition     = can(regex("^[a-z0-9.-]{3,63}$", var.bucket_name))
-    error_message = "Invalid bucket name. Bucket names must be lowercase, between 3 and 63 characters, and can only contain lowercase letters, numbers, hyphens, and periods (dots)."
-  }
-}
+#  validation {
+#    condition     = can(regex("^[a-z0-9.-]{3,63}$", var.bucket_name))
+#    error_message = "Invalid bucket name. Bucket names must be lowercase, between 3 and 63 characters, and can only contain lowercase letters, numbers, hyphens, and periods (dots)."
+#  }
+#}
 
 variable "public_path" {
   description = "The path to the public folder"
   type        = string
-
-  validation {
-    condition     = fileexists(var.public_path)
-    error_message = "The specified public folder does not exist."
-  }
 }
 
 variable "content_version" {
