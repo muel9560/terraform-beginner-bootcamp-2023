@@ -8,34 +8,19 @@ variable "user_uuid" {
   }
 }
 
-variable "bucket_name" {
-  description = "AWS S3 Bucket Name"
+#variable "bucket_name" {
+#  description = "AWS S3 Bucket Name"
+#  type        = string
+
+#  validation {
+#    condition     = can(regex("^[a-z0-9.-]{3,63}$", var.bucket_name))
+#    error_message = "Invalid bucket name. Bucket names must be lowercase, between 3 and 63 characters, and can only contain lowercase letters, numbers, hyphens, and periods (dots)."
+#  }
+#}
+
+variable "public_path" {
+  description = "The path to the public folder"
   type        = string
-
-  validation {
-    condition     = can(regex("^[a-z0-9.-]{3,63}$", var.bucket_name))
-    error_message = "Invalid bucket name. Bucket names must be lowercase, between 3 and 63 characters, and can only contain lowercase letters, numbers, hyphens, and periods (dots)."
-  }
-}
-
-variable "index_html_filepath" {
-  description = "Path to the index HTML file"
-  type        = string
-
-  validation {
-    condition     = fileexists(var.index_html_filepath)
-    error_message = "The specified index HTML file does not exist."
-  }
-}
-
-variable "error_html_filepath" {
-  description = "Path to the error HTML file"
-  type        = string
-
-  validation {
-    condition     = fileexists(var.error_html_filepath)
-    error_message = "The specified error HTML file does not exist."
-  }
 }
 
 variable "content_version" {
@@ -46,9 +31,4 @@ variable "content_version" {
     condition     = var.content_version > 0 && ceil(var.content_version) == floor(var.content_version)
     error_message = "Content version must be a positive integer starting at 1."
   }
-}
-
-variable "assets_path" {
-  description = "Path to assets folder"
-  type = string
 }
