@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "Idaho-Muellers"
+    organization = "IDAHO-MUELLERS"
     workspaces {
       name = "terraform-beginner-bootcamp-2023"
     }
